@@ -54,6 +54,11 @@ ifeq (${shell test -d /opt/local && echo Exists}, Exists)
 IPATH		+= /opt/local/include
 LFLAGS		= -L/opt/local/lib/
 endif
+# Thats for Homebrew libelf
+ifeq (${shell test -d /usr/local && echo Exists}, Exists)
+IPATH		+= /usr/local/include/libelf
+LFLAGS		= -L/usr/local/lib/
+endif
 else
 LINUX_AVR_ROOTS := /usr/lib/avr /usr/avr /opt/cross/avr/avr /usr/local/avr
 AVR_ROOT := $(firstword $(wildcard $(LINUX_AVR_ROOTS)))
